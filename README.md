@@ -20,14 +20,14 @@ When OpenCode fires a `session.created` event for a child session (one with a `p
 ## Installation
 
 ```bash
-bun add opencode-tmux
+bun add @floschl/opencode-tmux
 ```
 
 Register the plugin in your `opencode.json` (global `~/.config/opencode/opencode.json` or project-local):
 
 ```json
 {
-  "plugin": ["opencode-tmux"]
+  "plugin": ["@floschl/opencode-tmux"]
 }
 ```
 
