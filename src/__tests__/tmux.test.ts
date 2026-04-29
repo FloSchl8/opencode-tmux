@@ -38,6 +38,7 @@ describe("TmuxMultiplexer", () => {
     // Default: which tmux succeeds
     execFileImpl = (_file: string, args: string[]) => {
       if (args[0] === "tmux") return { stdout: "/usr/bin/tmux\n", stderr: "" };
+      if (args[0] === "list-panes") return { stdout: "0 %1\n", stderr: "" };
       return { stdout: "", stderr: "" };
     };
   });
@@ -119,6 +120,7 @@ describe("TmuxMultiplexer", () => {
     it("success: returns {success:true, paneId}", async () => {
       execFileImpl = (_file: string, args: string[]) => {
         if (args[0] === "tmux") return { stdout: "/usr/bin/tmux\n", stderr: "" };
+        if (args[0] === "list-panes") return { stdout: "0 %1\n", stderr: "" };
         if (args[0] === "split-window") return { stdout: "%5\n", stderr: "" };
         return { stdout: "", stderr: "" };
       };
@@ -133,6 +135,7 @@ describe("TmuxMultiplexer", () => {
       let capturedArgs: string[] = [];
       execFileImpl = (_file: string, args: string[]) => {
         if (args[0] === "tmux") return { stdout: "/usr/bin/tmux\n", stderr: "" };
+        if (args[0] === "list-panes") return { stdout: "0 %1\n", stderr: "" };
         if (args[0] === "split-window") {
           capturedArgs = args;
           return { stdout: "%5\n", stderr: "" };
@@ -193,6 +196,7 @@ describe("TmuxMultiplexer", () => {
       let capturedArgs: string[] = [];
       execFileImpl = (_file: string, args: string[]) => {
         if (args[0] === "tmux") return { stdout: "/usr/bin/tmux\n", stderr: "" };
+        if (args[0] === "list-panes") return { stdout: "0 %1\n", stderr: "" };
         if (args[0] === "split-window") {
           capturedArgs = args;
           return { stdout: "%7\n", stderr: "" };
@@ -212,6 +216,7 @@ describe("TmuxMultiplexer", () => {
       let capturedArgs: string[] = [];
       execFileImpl = (_file: string, args: string[]) => {
         if (args[0] === "tmux") return { stdout: "/usr/bin/tmux\n", stderr: "" };
+        if (args[0] === "list-panes") return { stdout: "0 %1\n", stderr: "" };
         if (args[0] === "split-window") {
           capturedArgs = args;
           return { stdout: "%5\n", stderr: "" };
@@ -222,7 +227,7 @@ describe("TmuxMultiplexer", () => {
       const t = new TmuxMultiplexer();
       await t.spawnPane("sess1", "Agent", "http://localhost:3000", "/home/user");
       expect(capturedArgs).toContain("-t");
-      expect(capturedArgs).toContain("%3");
+      expect(capturedArgs).toContain("%1");
     });
   });
 
