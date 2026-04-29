@@ -1,6 +1,6 @@
 {
   "name": "opencode-tmux",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Minimal OpenCode plugin: auto-spawn tmux panes for subagent sessions",
   "type": "module",
   "main": "dist/index.js",
