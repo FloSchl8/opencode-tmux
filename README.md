@@ -17,6 +17,16 @@ When OpenCode fires a `session.created` event for a child session (one with a `p
 - OpenCode must be **running inside a tmux session** (the plugin is a no-op otherwise)
 - `opencode` binary must be in `PATH` (for the `attach` command in spawned panes)
 
+## Usage
+
+OpenCode must be started as a server with an explicit port so the plugin knows the `serverUrl` to pass to `opencode attach` in spawned panes:
+
+```bash
+opencode --port 3000
+```
+
+Without a port, the plugin cannot construct the `serverUrl` and the `opencode attach <serverUrl> --session <id>` command in new tmux panes will fail.
+
 ## Installation
 
 ```bash
