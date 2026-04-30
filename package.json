@@ -1,6 +1,6 @@
 {
   "name": "@floschl/opencode-tmux",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Minimal OpenCode plugin: auto-spawn tmux panes for subagent sessions",
   "type": "module",
   "main": "dist/index.js",
@@ -11,8 +11,18 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": ["dist/*.js", "dist/*.d.ts", "README.md", "LICENSE"],
-  "keywords": ["opencode", "opencode-plugin", "tmux", "subagent"],
+  "files": [
+    "dist/*.js",
+    "dist/*.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "tmux",
+    "subagent"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "bun build src/index.ts --outdir dist --target node --format esm --external @opencode-ai/plugin && tsc --emitDeclarationOnly",
